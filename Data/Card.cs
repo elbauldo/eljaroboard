@@ -1,15 +1,15 @@
 using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace eljaroboard.Data
 {
     public class Card
     {
-        public DateTime Date { get; set; }
-
-        public int TemperatureC { get; set; }
-
-        public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
-
-        public string Summary { get; set; }
+        [Key]
+        public int CardId { get; set; }
+        public DateTime Created { get; set; }
+        public int CreatorID { get; set; }
+        public int Upticks { get; set; }
+        public int Downticks { get; set; }
     }
 }
