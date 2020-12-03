@@ -1,0 +1,18 @@
+.container {
+    background-color: pink;
+    margin: 5px, 5px, 5px, 5px;
+}
+
+
+.col-md-2 {
+    background-color: bisque;
+    margin-left: 5px;
+    margin-top: 5px;
+    margin-right: 5px;
+    margin-bottom: 5px;
+}
+
+.cardContainer {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}

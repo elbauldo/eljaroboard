@@ -1,0 +1,47 @@
+﻿@page "/cardItem"
+@inject IJSRuntime JsRuntime
+
+<div class="container cardItem">
+    <div class="row">
+        <button type="button" class="btn btn-primary" @onclick=newComment>pop</button>
+    </div>
+    <div class="row">
+        <div class="col-xs-12">@crd.CardText</div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12">Down: @crd.Downticks</div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12">Uo: @crd.Upticks</div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12">Col: @crd.Column</div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12">ID: @crd.CardId</div>
+    </div>
+    @if (commentEditVisible)
+    {
+        foreach (var comment in crd.Comments)
+        {
+            <div class="row">
+                <div class="col-xs-12">
+                    <textarea type="input" aria-multiline="true" disabled="true">@comment.Comment</textarea>
+                </div>
+            </div>
+        }
+    }
+</div>
+
+@code {
+    [Parameter]
+    public Card crd { get; set; }
+
+    public bool commentEditVisible = false;
+
+    public void newComment()
+    {
+        commentEditVisible = !commentEditVisible;
+    }
+
+}

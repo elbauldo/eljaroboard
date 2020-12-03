@@ -6,11 +6,49 @@
 
 <button class="btn btn-primary" @onclick="IncrementCount">Click me</button>
 
+<button class="btn btn-primary" @onclick="OnNewCard">Show Card</button>
+
+
+<div class="container">
+    <div class="row">
+        <label for="Text">Card Id</label><input type="text" name="CardId" @bind=CardId>
+    </div>
+    <div class="row">
+    </div>
+    <label for="Text">Card Text</label><input type="text" name="Text" @bind=CardText>
+</div>
+
 @code {
+    [Parameter]
+    public EventCallback<int> OnMultipleOfThree { get; set; }
+
+
+    [Parameter]
+    public EventCallback<Card> OnCard { get; set; }
+
     private int currentCount = 0;
 
-    private void IncrementCount()
+    public string CardText { get; set; }
+    public int CardId { get; set; }
+
+    private async Task IncrementCount()
     {
         currentCount++;
+        if (currentCount % 3 == 0)
+            await OnMultipleOfThree.InvokeAsync(currentCount);
+    }
+
+    private async Task OnNewCard()
+    {
+        Card crd = new Card()
+        {
+            CardId = this.CardId,
+            CardText = this.CardText,
+            Column = 0,
+            Comments = null,
+            Upticks = 10,
+            Downticks = 1
+        };
+        await OnCard.InvokeAsync(crd);
     }
 }

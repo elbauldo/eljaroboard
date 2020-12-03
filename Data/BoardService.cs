@@ -1,4 +1,4 @@
-namespace Data
+namespace eljaroboard.Data
 {
     public class BoardService
     {

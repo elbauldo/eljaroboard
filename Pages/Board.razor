@@ -1,17 +1,12 @@
 ﻿@page "/board"
-<div class="jumbotron">
-    <div class="row">
-        <div class="col-md-12">
-            <h1>Board</h1>
-        </div>
-    </div>
-
-</div>
+@using eljaroboard.Data
+@inject CardService cardService
 
 <div class="container">
     <div class="row">
         <div class="col-md-2">
             <label>Stop</label>
+            <button class="btn btn-outline-primary" @onclick="NewCard">add</button>
         </div>
         <div class="col-md-2">
             <label>Less</label>
@@ -26,23 +21,55 @@
             <label>Start</label>
         </div>
     </div>
+
     <div class="row">
-        <div class="col-md-2">
-        </div>
-        <div class="col-md-2">
-        </div>
-        <div class="col-md-2">
-        </div>
-        <div class="col-md-2">
-        </div>
-        <div class="col-md-2">
-        </div>
+
+            <div class="col-md-2">
+                @if (cards == null)
+                {
+                        <p>Loading ...</p> 
+                }  else {
+                @foreach (var card in cards)
+                {
+                    <div class="cardContainer">
+                      <CardItem crd=@card/>
+                    </div>
+                }}
+            </div>
+            <div class="col-md-2">
+                
+            </div>
+            <div class="col-md-2">
+            </div>
+            <div class="col-md-2">
+            </div>
+            <div class="col-md-2">
+            </div>
     </div>
+
 </div>
 
 
 
-
 @code {
+    private Card[] cards;
 
+    protected override async Task OnInitializedAsync()
+    {
+        cards = await cardService.GetCards();
+    }
+
+        private void NewCard()
+    {
+        cards.Append<Card>(new Card {
+
+             CardId = 0,
+                Column = 0,
+                CreatorID = 1,
+                Downticks = 1,
+                Upticks = 3,
+                CardText = "Bananatime " + cards.Length
+               });
+    }
 }
+

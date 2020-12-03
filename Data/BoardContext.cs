@@ -7,8 +7,10 @@ namespace eljaroboard.Data
         {
         }
 
-        public DbSet<Card> Users { get; set; }
-
+        public DbSet<CardComment> CardComments { get; set; }
+        public DbSet<Card> Cards { get; set; }
+        public DbSet<User> Users { get; set; }
+        public DbSet<Board> Boards { get; set; }
     }
 }
 

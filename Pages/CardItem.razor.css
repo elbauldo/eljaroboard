@@ -1,0 +1,11 @@
+.cardItem {
+    background-color: aqua;
+    border-width: 1px;
+    border-style: solid;
+    border-color: blue;
+}
+
+textarea {
+    width: 150px;
+    margin-top: 5px;
+}

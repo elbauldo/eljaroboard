@@ -1,10 +1,10 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace Data
+namespace eljaroboard.Data
 {
     public class User
     {
-        [Required]
+        [Key]
         public int UserId { get; set; }
         [StringLength(10, MinimumLength = 6)]
         public string UserName { get; set; }

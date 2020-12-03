@@ -1,4 +1,28 @@
 @page "/"
 
-EljaroBoards
+Last multiple of three = @LastMultipleOfThree
 
+Card ID: @crd.CardId
+
+Card Text: @crd.CardText
+
+<Counter OnMultipleOfThree=@UpdateLastMultipleOfThreeValue OnCard=@UpdateCard />
+
+
+@code
+{
+    int LastMultipleOfThree = 0;
+
+    Card crd = new Card() { CardId = 1, CardText = "apple", Column = 0, Comments = null, Upticks = 10, Downticks = 1 };
+
+    private void UpdateLastMultipleOfThreeValue(int value)
+    {
+        LastMultipleOfThree = value;
+    }
+
+    private void UpdateCard(Card value)
+    {
+        crd = value;
+    }
+
+}
